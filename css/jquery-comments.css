@@ -1,42 +1,31 @@
 .jquery-comments * {
-	box-sizing: border-box;
 	font-family: inherit;
 }
 
-.jquery-comments .textarea, .jquery-comments input, .jquery-comments button {
-	-webkit-appearance: none;
+.jquery-comments .textarea, .jquery-comments input, .jquery-comments .button {
+    -webkit-appearance: none;
 	-moz-appearance: none;
 	-ms-appearance: none;
 	appearance: none;
 
 	vertical-align: top;
-	border-radius: 0;
+	
 	margin: 0;
 	padding: 0;
 	border: 0;
 	outline: 0;
-	background: rgba(0, 0, 0, 0);
+    background: transparent;
 }
 
 .jquery-comments button {
 	vertical-align: inherit;
 }
 
-.jquery-comments [contentEditable=true]:empty:not(:focus):before{
-    content:attr(data-placeholder);
-    color: #CCC;
-    position: inherit;
-}
-
 .jquery-comments i.fa {
 	width: 1em;
 	height: 1em;
-	background-size: cover;
 }
 
-.jquery-comments i.fa.image:before {
-	content: "";
-}
 
 .jquery-comments .spinner {
 	font-size: 2em;
@@ -58,69 +47,45 @@
 	max-height: 50px;
 }
 
-.jquery-comments .profile-picture.round {
-	border-radius: 50%;
-}
-
 .jquery-comments .commenting-field.main .profile-picture {
 	margin-bottom: 1em;
 }
 
 .jquery-comments .textarea-wrapper {
 	overflow: hidden;
-	padding-left: 15px;
 	position: relative;
 }
 
-.jquery-comments .textarea-wrapper:before {
-	content: " ";
-	position: absolute;
-	border: 5px solid #D5D5D5;
-	left: 5px;
-	top: 0;
-	width: 10px;
-	height: 10px;
-	box-sizing: border-box;
-	border-bottom-color: rgba(0, 0, 0, 0);
-	border-left-color: rgba(0, 0, 0, 0);
-}
 
 .jquery-comments .textarea-wrapper:after {
-	content: " ";
 	position: absolute;
 	border: 7px solid #FFF;
 	left: 7px;
 	top: 1px;
 	width: 10px;
 	height: 10px;
-	box-sizing: border-box;
 	border-bottom-color: rgba(0, 0, 0, 0);
 	border-left-color: rgba(0, 0, 0, 0);
 }
 
 .jquery-comments .textarea-wrapper .close {
-	cursor: pointer;
+    cursor: pointer;
 	width: 1em;
 	height: 1em;
 	right: 0;
 	z-index: 10;
 	position: absolute;
-	border: .5em solid rgba(0,0,0,0);
-	box-sizing: content-box;
+    border: 1px solid #DDD;
 	font-size: inherit;
-	opacity: 0.5;
-
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+}
+.jquery-comments .textarea-wrapper .close:before {
+    content: "X";
+    margin-right: 2px;
+    margin-top: 2px;
+    padding: 1px;
 }
 
-.jquery-comments .textarea-wrapper .close:hover {
-	opacity: 1;
-}
-
-.jquery-comments:not(.mobile) .scrollable .textarea-wrapper .close {
+.jquery-comments .scrollable .textarea-wrapper .close {
 	margin-right: 15px;	/* Because of scrollbar */
 }
 
@@ -130,15 +95,6 @@
 	left: 37.5%;
 	height: 100%;
 	position: absolute;
-	-ms-transform: rotate(45deg);
-	-webkit-transform: rotate(45deg);
-	transform: rotate(45deg);
-}
-
-.jquery-comments .textarea-wrapper .close .right {
-	-ms-transform: rotate(-45deg);
-	-webkit-transform: rotate(-45deg);
-	transform: rotate(-45deg);
 }
 
 .jquery-comments .textarea-wrapper .textarea {
@@ -160,7 +116,7 @@
 	padding: 0;
 }
 
-.jquery-comments:not(.mobile) .scrollable .textarea-wrapper .textarea {
+.jquery-comments .scrollable .textarea-wrapper .textarea {
 	padding-right: calc(2em + 15px);	/* Because of scrollbar */
 }
 
@@ -175,66 +131,18 @@
 }
 
 .jquery-comments .textarea-wrapper .control-row > span {
-	float: right;
-
-	color: #FFF;
+    float: right;
+    cursor: pointer;
 	padding: 0 1em;
 	font-size: 1em;
 	line-height: 1.6em;
 	margin-top: .4em;
-	border: 1px solid rgba(0, 0, 0, 0);
-	opacity: .5;
-}
-
-.jquery-comments .textarea-wrapper .control-row > span:not(:first-child) {
-	margin-right: .5em;
-}
-
-.jquery-comments .textarea-wrapper .control-row > span.enabled {
-	opacity: 1;
-	cursor: pointer;
-}
-
-.jquery-comments .textarea-wrapper .control-row > span.enabled:hover {
-	opacity: .9;
-}
-
-.jquery-comments ul.navigation {
-	clear: both;
-
-	color: #CCC;
-	border-bottom: 2px solid #CCC;
-	margin-bottom: 1em;
-	line-height: 2em;
-	font-size: 1em;
-}
-
-.jquery-comments ul.navigation li {
-	display: inline-block;
-	position: relative;
-	padding: 0 1em;
-	cursor: pointer;
-	font-weight: bold;
-}
-
-.jquery-comments ul.navigation li.active, .jquery-comments ul.navigation li:hover {
-	color: #000;
-}
-
-.jquery-comments ul.navigation li.active:after {
-	content: " ";
-	display: block;
-	right: 0;
-	height: 2px;
-	background: #000;
-	position: absolute;
-	bottom: -2px;
-	left: 0;
+    background-color: dodgerblue;
+    border: 1px solid #DDD;
 }
 
 .jquery-comments .no-comments {
 	display: none;
-
 	text-align: center;
 	font-size: 1.5em;
 	color: #CCC;
@@ -335,7 +243,6 @@
 }
 
 .jquery-comments ul#comment-list li.comment .actions .action {
-	display: inline-block;
 	cursor: pointer;
 	margin-left: 1em;
 	margin-right: 1em;
@@ -370,18 +277,16 @@
 
 
 /* Child comments */
+.jquery-comments ul#comment-list li.comment .child-comments > * { /* Margin for second level content */
+    padding-left: 20px;
+}
+
 .jquery-comments ul#comment-list li.comment .child-comments > *:before { /* Margin for second level content */
-	content: "";
 	height: 1px;
 	float: left;
 
 	width: calc(3.6em + .5em);	/* Profile picture width plus margin */
 	max-width: calc(50px + .5em);	/* Profile picture max width plus margin */
-}
-
-.jquery-comments ul#comment-list li.comment .child-comments .profile-picture {
-	width: 2.4em;
-	height: 2.4em;
 }
 
 .jquery-comments ul#comment-list li.comment .child-comments li.toggle-all {
@@ -398,7 +303,7 @@
 }
 
 .jquery-comments ul#comment-list li.comment .child-comments li.toggle-all .caret {
-	display: inline-block;
+    display: inline-block;
 	vertical-align: middle;
 	width: 0;
 	height: 0;
@@ -406,14 +311,13 @@
 	margin-left: .5em;
 	border: .3em solid;
 	margin-top: .35em;
-
-	border-left-color: rgba(0, 0, 0, 0);
-	border-bottom-color: rgba(0, 0, 0, 0);
-	border-right-color: rgba(0, 0, 0, 0);
+    border-left-color: #000000;
+    border-bottom-color: #000000;
+    border-right-color: #000000;
 }
 
 .jquery-comments ul#comment-list li.comment .child-comments li.toggle-all .caret.up {
-	border-top-color: rgba(0, 0, 0, 0);
+    border-top-color: #000000;
 	border-bottom-color: inherit;
 	margin-top: -.2em;
 }
