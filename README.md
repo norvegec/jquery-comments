@@ -1,5 +1,6 @@
 # jquery-comments
-jquery-comments is a jQuery plugin for implementing an out-of-the-box commenting solution to any web application with an existing backend. It provides all the UI functionalities and ties them to callbacks that let you easily define what you want to do with the data. The library is highly customizable and very easy to integrate thanks to a wide variety of settings.
+this is a fork of https://github.com/Viima/jquery-comments
+main goal is to add IE8 support, and cut navigation panel
 
 ![Screenshot of jquery-comments](screenshot.png?raw=true "Screenshot of jquery-comments")
 
@@ -11,12 +12,8 @@ Features
 - Time formatting
 - Field mappings
 - Callbacks
-- Fully responsive and mobile compatible
+- Fully responsive
 - Miscellaneous settings
-
-Demo
-----
-http://viima.github.io/jquery-comments/demo/
 
 Quick start
 -----------
@@ -70,7 +67,7 @@ Maintainers
 
 Browser support
 ---------------
-IE9+ and all modern browsers
+IE8+ and all modern browsers
 
 Copyright and license
 ---------------------
