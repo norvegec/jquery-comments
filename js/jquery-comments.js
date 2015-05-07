@@ -129,9 +129,9 @@ if (!window.Object.create) {
 
             // Comment
             'click li.comment ul.child-comments .toggle-all': 'toggleReplies',
-            'click li.comment button.reply': 'replyButtonClicked',
-            'click li.comment button.edit': 'editButtonClicked',
-            'click li.comment button.upvote': 'upvoteComment',
+            'click li.comment span.reply': 'replyButtonClicked',
+            'click li.comment span.edit': 'editButtonClicked',
+            'click li.comment span.upvote': 'upvoteComment',
         },
 
 
@@ -207,7 +207,7 @@ if (!window.Object.create) {
 
             var success = function (commentsArray) {
                 // Convert comments to custom data model
-                var commentModels = commentsArray.map(function (commentsJSON) {
+                var commentModels = $.map(commentsArray, function (commentsJSON) {
                     return self.createCommentModel(commentsJSON)
                 });
 
@@ -541,7 +541,7 @@ if (!window.Object.create) {
             // Disable send button while request is pending
             sendButton.removeClass('enabled');
 
-            var time = new Date().toISOString();
+            var time = new Date().toString();
             var commentJSON = {
                 id: 'c' + (this.getComments().length + 1),   // Temporary id
                 parent: textarea.attr('data-parent') || null,
@@ -820,7 +820,8 @@ if (!window.Object.create) {
             // Close button
             var closeButton = $('<span/>', {
                 'class': 'close',
-            }).append($('<span class="left"/>')).append($('<span class="right"/>'));
+            });
+//                .append($('<span class="left"/>')).append($('<span class="right"/>'));
 
             // Save button text
             if (existingCommentId) {
@@ -854,14 +855,16 @@ if (!window.Object.create) {
             // Save button
             var saveButtonClass = existingCommentId ? 'update' : 'send';
             var saveButton = $('<span/>', {
-                'class': saveButtonClass + ' save highlight-background',
+                'class': saveButtonClass + ' button save highlight-background',
                 text: saveButtonText,
             });
 
             // Populate the element
             controlRow.prepend(saveButton);
             textareaWrapper.append(closeButton).append(textarea).append(controlRow);
-            commentingField.append(profilePicture).append(textareaWrapper);
+            commentingField
+//                .append(profilePicture)
+                .append(textareaWrapper);
 
 
             if (parentId) {
@@ -992,8 +995,8 @@ if (!window.Object.create) {
             });
 
             // Reply
-            var reply = $('<button/>', {
-                'class': 'action reply',
+            var reply = $('<span/>', {
+                'class': 'button action reply',
                 text: this.options.textFormatter(this.options.replyText),
             });
 
@@ -1010,8 +1013,8 @@ if (!window.Object.create) {
             var upvotes = this.createUpvoteElement(commentModel);
 
             // Edit
-            var edit = $('<button/>', {
-                'class': 'action edit',
+            var edit = $('<span/>', {
+                'class': 'button action edit',
                 text: this.options.textFormatter(this.options.editText),
             });
 
@@ -1030,7 +1033,10 @@ if (!window.Object.create) {
             });
 
             wrapper.append(content).append(actions);
-            commentWrapper.append(profilePicture).append(time).append(name).append(wrapper);
+            commentWrapper
+//                .append(profilePicture)
+                .append(time)
+                .append(name).append(wrapper);
             return commentWrapper;
         },
 
@@ -1045,7 +1051,7 @@ if (!window.Object.create) {
             }
 
             // Upvotes
-            var upvoteEl = $('<button/>', {
+            var upvoteEl = $('<span/>', {
                 'class': 'action upvote' + (commentModel.userHasUpvoted ? ' highlight-font' : ''),
             }).append($('<span/>', {
                 text: commentModel.upvoteCount,
@@ -1074,7 +1080,9 @@ if (!window.Object.create) {
 
         getComments: function () {
             var self = this;
-            return Object.keys(this.commentsById).map(function (id) { return self.commentsById[id] });
+            var keys = Object.keys(this.commentsById);
+            var keyArray = $.makeArray(keys);
+            return $.map(keyArray, function (id) { return self.commentsById[id] });
         },
 
         getChildComments: function (parentId) {
